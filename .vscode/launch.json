@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "DotNET Core API",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\src\\backend\\backend.csproj"
+        },
+        {
+            "name": "NextJS React Frontend",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/frontend/node_modules/next/dist/bin/next",
+            "args": ["dev"],
+            "cwd": "${workspaceFolder}/src/frontend",
+            "env": {
+            "NODE_ENV": "development"
+            },
+            "console": "integratedTerminal",
+            "serverReadyAction": {
+            "pattern": "ready - started server on .+, url: (https?://\\S+)",
+            "uriFormat": "%s",
+            "action": "openExternally"
+            }
+        }
+    ],
+    "compounds": [
+      {
+        "name": "Launch Full Stack",
+        "configurations": ["DotNET Core API", "NextJS React Frontend"],
+        "stopAll": true
+      }
+    ]
+  }
