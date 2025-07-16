@@ -1,9 +1,9 @@
 "use client";
-import axios from "axios";
+import api from "@/lib/api";
 import useSWR from "swr";
 export default function Home() {
   const { data, isLoading, error } = useSWR("weather", async () => {
-    return (await axios.get("http://localhost:5152/weatherforecast")).data;
+    return (await api.get("/weatherforecast")).data;
   });
   if (isLoading) {
     return <div>Loading...</div>;
