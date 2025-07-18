@@ -3,7 +3,7 @@ import api from "@/lib/api";
 import useSWR from "swr";
 export default function Home() {
   const { data, isLoading, error } = useSWR("weather", async () => {
-    return (await api.get("/weatherforecast")).data;
+    return (await api.get("/api/joke")).data;
   });
   if (isLoading) {
     return <div>Loading...</div>;
@@ -13,14 +13,7 @@ export default function Home() {
   }
   return (
     <main>
-      <ul>
-        {data.map((weatherObj: any, index: number) => (
-          <li key={index}>
-            {weatherObj.date} - {weatherObj.summary}: {weatherObj.temperatureC}c
-            ({weatherObj.temperatureF}f)
-          </li>
-        ))}
-      </ul>
+      <p>{data}</p>
     </main>
   );
 }

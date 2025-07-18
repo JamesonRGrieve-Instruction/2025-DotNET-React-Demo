@@ -8,7 +8,7 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   const jwt = getCookie("jwt");
   if (jwt) {
-    config.headers.Authorization = `Bearer: ${jwt}`;
+    config.headers.Authorization = `Bearer ${jwt}`;
   }
   return config;
 });

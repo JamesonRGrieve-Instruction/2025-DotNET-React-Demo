@@ -122,10 +122,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.SetIsOriginAllowed(origin => true)
+        policy.AllowAnyOrigin()
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+              .AllowAnyMethod();
     });
 });
 
@@ -143,8 +142,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 app.UseCors("AllowAll");
+// app.UseHttpsRedirection(); // Disabled for development to avoid certificate issues
 app.UseAuthentication();
 app.UseAuthorization();
 

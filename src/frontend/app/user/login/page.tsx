@@ -10,7 +10,7 @@ export default function Home() {
     async (e) => {
       e.preventDefault();
       const result = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URI}/api/auth/login`,
+        `${process.env.NEXT_PUBLIC_API_URI}/api/auth`,
         {
           Email: email,
           Password: password,
