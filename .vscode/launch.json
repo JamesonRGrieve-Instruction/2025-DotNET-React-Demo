@@ -5,17 +5,13 @@
             "name": "DotNET Core API",
             "type": "coreclr",
             "request": "launch",
-            "program": "dotnet",
-            "args": ["run", "--project", "${workspaceFolder}/src/backend/backend.csproj"],
+            "program": "${workspaceFolder}/src/backend/bin/Debug/net9.0/backend.dll",
             "cwd": "${workspaceFolder}/src/backend",
             "stopAtEntry": false,
-            // "serverReadyAction": {
-            //   "action": "openExternally",
-            //   "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            // },
             "env": {
               "ASPNETCORE_ENVIRONMENT": "Development"
-            }
+            },
+            "preLaunchTask": "build"
           },
         {
             "name": "NextJS React Frontend",
