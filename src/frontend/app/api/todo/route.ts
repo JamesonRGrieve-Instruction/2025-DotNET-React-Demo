@@ -16,23 +16,6 @@ export async function POST(request: NextRequest) {
     }
   );
 }
-export async function PUT(request: NextRequest, { params }) {
-  const { completed } = await request.json();
-  return NextResponse.json(
-    await prisma.todo.update({
-      where: { id: parseInt(params.id) },
-      data: { completed },
-    }),
-    { status: 200 }
-  );
-}
-
-export async function DELETE(request: NextRequest, { params }) {
-  await prisma.todo.delete({
-    where: { id: parseInt(params.id) },
-  });
-  return NextResponse.next({ status: 204 });
-}
 
 // export async function GET(request: NextRequest, { params }) {
 //   return NextResponse.json(

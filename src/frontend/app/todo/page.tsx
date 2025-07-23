@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 export default function Home() {
   const [title, setTitle] = useState("");
   const [todos, setTodos] = useState([]);
@@ -8,11 +8,11 @@ export default function Home() {
     fetchTodos();
   }, []);
 
-  const fetchTodos = async () => {
+  const fetchTodos = useCallback(async () => {
     const response = await fetch("/api/todo");
     const data = await response.json();
     setTodos(data);
-  };
+  }, []);
 
   const addTodo = async (title) => {
     const response = await fetch("/api/todo", {
@@ -41,6 +41,7 @@ export default function Home() {
     await fetch(`/api/todo/${id}`, { method: "DELETE" });
     setTodos(todos.filter((t) => t.id !== id));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim()) {
