@@ -20,5 +20,5 @@ export default async function Middleware(req) {
   return response;
 }
 export const config = {
-  matcher: ["/api/:path*", "/weather/:path*"],
+  matcher: ["/weather/:path*"],
 };
