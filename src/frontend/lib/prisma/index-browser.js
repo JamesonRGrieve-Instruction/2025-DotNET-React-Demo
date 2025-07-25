@@ -117,12 +117,21 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.TodoScalarFieldEnum = {
+exports.Prisma.PatronScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  completed: 'completed',
+  name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BookScalarFieldEnum = {
+  id: 'id',
+  ISBN: 'ISBN',
+  Title: 'Title',
+  Author: 'Author',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  patronId: 'patronId'
 };
 
 exports.Prisma.SortOrder = {
@@ -132,7 +141,8 @@ exports.Prisma.SortOrder = {
 
 
 exports.Prisma.ModelName = {
-  Todo: 'Todo'
+  Patron: 'Patron',
+  Book: 'Book'
 };
 
 /**

@@ -14,10 +14,15 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Todo
+ * Model Patron
  * 
  */
-export type Todo = $Result.DefaultSelection<Prisma.$TodoPayload>
+export type Patron = $Result.DefaultSelection<Prisma.$PatronPayload>
+/**
+ * Model Book
+ * 
+ */
+export type Book = $Result.DefaultSelection<Prisma.$BookPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -26,8 +31,8 @@ export type Todo = $Result.DefaultSelection<Prisma.$TodoPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Todos
- * const todos = await prisma.todo.findMany()
+ * // Fetch zero or more Patrons
+ * const patrons = await prisma.patron.findMany()
  * ```
  *
  *
@@ -47,8 +52,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Todos
-   * const todos = await prisma.todo.findMany()
+   * // Fetch zero or more Patrons
+   * const patrons = await prisma.patron.findMany()
    * ```
    *
    *
@@ -145,14 +150,24 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.todo`: Exposes CRUD operations for the **Todo** model.
+   * `prisma.patron`: Exposes CRUD operations for the **Patron** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Todos
-    * const todos = await prisma.todo.findMany()
+    * // Fetch zero or more Patrons
+    * const patrons = await prisma.patron.findMany()
     * ```
     */
-  get todo(): Prisma.TodoDelegate<ExtArgs, ClientOptions>;
+  get patron(): Prisma.PatronDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.book`: Exposes CRUD operations for the **Book** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Books
+    * const books = await prisma.book.findMany()
+    * ```
+    */
+  get book(): Prisma.BookDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Todo: 'Todo'
+    Patron: 'Patron',
+    Book: 'Book'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,81 +628,155 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "todo"
+      modelProps: "patron" | "book"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Todo: {
-        payload: Prisma.$TodoPayload<ExtArgs>
-        fields: Prisma.TodoFieldRefs
+      Patron: {
+        payload: Prisma.$PatronPayload<ExtArgs>
+        fields: Prisma.PatronFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.TodoFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload> | null
+            args: Prisma.PatronFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.TodoFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>
+            args: Prisma.PatronFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>
           }
           findFirst: {
-            args: Prisma.TodoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload> | null
+            args: Prisma.PatronFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.TodoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>
+            args: Prisma.PatronFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>
           }
           findMany: {
-            args: Prisma.TodoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>[]
+            args: Prisma.PatronFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>[]
           }
           create: {
-            args: Prisma.TodoCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>
+            args: Prisma.PatronCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>
           }
           createMany: {
-            args: Prisma.TodoCreateManyArgs<ExtArgs>
+            args: Prisma.PatronCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.TodoCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>[]
+            args: Prisma.PatronCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>[]
           }
           delete: {
-            args: Prisma.TodoDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>
+            args: Prisma.PatronDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>
           }
           update: {
-            args: Prisma.TodoUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>
+            args: Prisma.PatronUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>
           }
           deleteMany: {
-            args: Prisma.TodoDeleteManyArgs<ExtArgs>
+            args: Prisma.PatronDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.TodoUpdateManyArgs<ExtArgs>
+            args: Prisma.PatronUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.TodoUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>[]
+            args: Prisma.PatronUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>[]
           }
           upsert: {
-            args: Prisma.TodoUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TodoPayload>
+            args: Prisma.PatronUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PatronPayload>
           }
           aggregate: {
-            args: Prisma.TodoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTodo>
+            args: Prisma.PatronAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePatron>
           }
           groupBy: {
-            args: Prisma.TodoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TodoGroupByOutputType>[]
+            args: Prisma.PatronGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PatronGroupByOutputType>[]
           }
           count: {
-            args: Prisma.TodoCountArgs<ExtArgs>
-            result: $Utils.Optional<TodoCountAggregateOutputType> | number
+            args: Prisma.PatronCountArgs<ExtArgs>
+            result: $Utils.Optional<PatronCountAggregateOutputType> | number
+          }
+        }
+      }
+      Book: {
+        payload: Prisma.$BookPayload<ExtArgs>
+        fields: Prisma.BookFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BookFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BookFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>
+          }
+          findFirst: {
+            args: Prisma.BookFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BookFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>
+          }
+          findMany: {
+            args: Prisma.BookFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>[]
+          }
+          create: {
+            args: Prisma.BookCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>
+          }
+          createMany: {
+            args: Prisma.BookCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BookCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>[]
+          }
+          delete: {
+            args: Prisma.BookDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>
+          }
+          update: {
+            args: Prisma.BookUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>
+          }
+          deleteMany: {
+            args: Prisma.BookDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BookUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BookUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>[]
+          }
+          upsert: {
+            args: Prisma.BookUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookPayload>
+          }
+          aggregate: {
+            args: Prisma.BookAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBook>
+          }
+          groupBy: {
+            args: Prisma.BookGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BookGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BookCountArgs<ExtArgs>
+            result: $Utils.Optional<BookCountAggregateOutputType> | number
           }
         }
       }
@@ -774,7 +864,8 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    todo?: TodoOmit
+    patron?: PatronOmit
+    book?: BookOmit
   }
 
   /* Types for Logging */
@@ -864,376 +955,404 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type PatronCountOutputType
+   */
+
+  export type PatronCountOutputType = {
+    books: number
+  }
+
+  export type PatronCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    books?: boolean | PatronCountOutputTypeCountBooksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PatronCountOutputType without action
+   */
+  export type PatronCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PatronCountOutputType
+     */
+    select?: PatronCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PatronCountOutputType without action
+   */
+  export type PatronCountOutputTypeCountBooksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookWhereInput
+  }
+
 
   /**
    * Models
    */
 
   /**
-   * Model Todo
+   * Model Patron
    */
 
-  export type AggregateTodo = {
-    _count: TodoCountAggregateOutputType | null
-    _avg: TodoAvgAggregateOutputType | null
-    _sum: TodoSumAggregateOutputType | null
-    _min: TodoMinAggregateOutputType | null
-    _max: TodoMaxAggregateOutputType | null
+  export type AggregatePatron = {
+    _count: PatronCountAggregateOutputType | null
+    _avg: PatronAvgAggregateOutputType | null
+    _sum: PatronSumAggregateOutputType | null
+    _min: PatronMinAggregateOutputType | null
+    _max: PatronMaxAggregateOutputType | null
   }
 
-  export type TodoAvgAggregateOutputType = {
+  export type PatronAvgAggregateOutputType = {
     id: number | null
   }
 
-  export type TodoSumAggregateOutputType = {
+  export type PatronSumAggregateOutputType = {
     id: number | null
   }
 
-  export type TodoMinAggregateOutputType = {
+  export type PatronMinAggregateOutputType = {
     id: number | null
-    title: string | null
-    completed: boolean | null
+    name: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type TodoMaxAggregateOutputType = {
+  export type PatronMaxAggregateOutputType = {
     id: number | null
-    title: string | null
-    completed: boolean | null
+    name: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type TodoCountAggregateOutputType = {
+  export type PatronCountAggregateOutputType = {
     id: number
-    title: number
-    completed: number
+    name: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type TodoAvgAggregateInputType = {
+  export type PatronAvgAggregateInputType = {
     id?: true
   }
 
-  export type TodoSumAggregateInputType = {
+  export type PatronSumAggregateInputType = {
     id?: true
   }
 
-  export type TodoMinAggregateInputType = {
+  export type PatronMinAggregateInputType = {
     id?: true
-    title?: true
-    completed?: true
+    name?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type TodoMaxAggregateInputType = {
+  export type PatronMaxAggregateInputType = {
     id?: true
-    title?: true
-    completed?: true
+    name?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type TodoCountAggregateInputType = {
+  export type PatronCountAggregateInputType = {
     id?: true
-    title?: true
-    completed?: true
+    name?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type TodoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Todo to aggregate.
+     * Filter which Patron to aggregate.
      */
-    where?: TodoWhereInput
+    where?: PatronWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Todos to fetch.
+     * Determine the order of Patrons to fetch.
      */
-    orderBy?: TodoOrderByWithRelationInput | TodoOrderByWithRelationInput[]
+    orderBy?: PatronOrderByWithRelationInput | PatronOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: TodoWhereUniqueInput
+    cursor?: PatronWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Todos from the position of the cursor.
+     * Take `±n` Patrons from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Todos.
+     * Skip the first `n` Patrons.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Todos
+     * Count returned Patrons
     **/
-    _count?: true | TodoCountAggregateInputType
+    _count?: true | PatronCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: TodoAvgAggregateInputType
+    _avg?: PatronAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: TodoSumAggregateInputType
+    _sum?: PatronSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: TodoMinAggregateInputType
+    _min?: PatronMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: TodoMaxAggregateInputType
+    _max?: PatronMaxAggregateInputType
   }
 
-  export type GetTodoAggregateType<T extends TodoAggregateArgs> = {
-        [P in keyof T & keyof AggregateTodo]: P extends '_count' | 'count'
+  export type GetPatronAggregateType<T extends PatronAggregateArgs> = {
+        [P in keyof T & keyof AggregatePatron]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateTodo[P]>
-      : GetScalarType<T[P], AggregateTodo[P]>
+        : GetScalarType<T[P], AggregatePatron[P]>
+      : GetScalarType<T[P], AggregatePatron[P]>
   }
 
 
 
 
-  export type TodoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TodoWhereInput
-    orderBy?: TodoOrderByWithAggregationInput | TodoOrderByWithAggregationInput[]
-    by: TodoScalarFieldEnum[] | TodoScalarFieldEnum
-    having?: TodoScalarWhereWithAggregatesInput
+  export type PatronGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PatronWhereInput
+    orderBy?: PatronOrderByWithAggregationInput | PatronOrderByWithAggregationInput[]
+    by: PatronScalarFieldEnum[] | PatronScalarFieldEnum
+    having?: PatronScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: TodoCountAggregateInputType | true
-    _avg?: TodoAvgAggregateInputType
-    _sum?: TodoSumAggregateInputType
-    _min?: TodoMinAggregateInputType
-    _max?: TodoMaxAggregateInputType
+    _count?: PatronCountAggregateInputType | true
+    _avg?: PatronAvgAggregateInputType
+    _sum?: PatronSumAggregateInputType
+    _min?: PatronMinAggregateInputType
+    _max?: PatronMaxAggregateInputType
   }
 
-  export type TodoGroupByOutputType = {
+  export type PatronGroupByOutputType = {
     id: number
-    title: string
-    completed: boolean
+    name: string
     createdAt: Date
     updatedAt: Date
-    _count: TodoCountAggregateOutputType | null
-    _avg: TodoAvgAggregateOutputType | null
-    _sum: TodoSumAggregateOutputType | null
-    _min: TodoMinAggregateOutputType | null
-    _max: TodoMaxAggregateOutputType | null
+    _count: PatronCountAggregateOutputType | null
+    _avg: PatronAvgAggregateOutputType | null
+    _sum: PatronSumAggregateOutputType | null
+    _min: PatronMinAggregateOutputType | null
+    _max: PatronMaxAggregateOutputType | null
   }
 
-  type GetTodoGroupByPayload<T extends TodoGroupByArgs> = Prisma.PrismaPromise<
+  type GetPatronGroupByPayload<T extends PatronGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<TodoGroupByOutputType, T['by']> &
+      PickEnumerable<PatronGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof TodoGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PatronGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], TodoGroupByOutputType[P]>
-            : GetScalarType<T[P], TodoGroupByOutputType[P]>
+              : GetScalarType<T[P], PatronGroupByOutputType[P]>
+            : GetScalarType<T[P], PatronGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type TodoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PatronSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    completed?: boolean
+    name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-  }, ExtArgs["result"]["todo"]>
+    books?: boolean | Patron$booksArgs<ExtArgs>
+    _count?: boolean | PatronCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["patron"]>
 
-  export type TodoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PatronSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    completed?: boolean
+    name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-  }, ExtArgs["result"]["todo"]>
+  }, ExtArgs["result"]["patron"]>
 
-  export type TodoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PatronSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    completed?: boolean
+    name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-  }, ExtArgs["result"]["todo"]>
+  }, ExtArgs["result"]["patron"]>
 
-  export type TodoSelectScalar = {
+  export type PatronSelectScalar = {
     id?: boolean
-    title?: boolean
-    completed?: boolean
+    name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "completed" | "createdAt" | "updatedAt", ExtArgs["result"]["todo"]>
+  export type PatronOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["patron"]>
+  export type PatronInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    books?: boolean | Patron$booksArgs<ExtArgs>
+    _count?: boolean | PatronCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PatronIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PatronIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $TodoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Todo"
-    objects: {}
+  export type $PatronPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Patron"
+    objects: {
+      books: Prisma.$BookPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      title: string
-      completed: boolean
+      name: string
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["todo"]>
+    }, ExtArgs["result"]["patron"]>
     composites: {}
   }
 
-  type TodoGetPayload<S extends boolean | null | undefined | TodoDefaultArgs> = $Result.GetResult<Prisma.$TodoPayload, S>
+  type PatronGetPayload<S extends boolean | null | undefined | PatronDefaultArgs> = $Result.GetResult<Prisma.$PatronPayload, S>
 
-  type TodoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TodoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TodoCountAggregateInputType | true
+  type PatronCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PatronFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PatronCountAggregateInputType | true
     }
 
-  export interface TodoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Todo'], meta: { name: 'Todo' } }
+  export interface PatronDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Patron'], meta: { name: 'Patron' } }
     /**
-     * Find zero or one Todo that matches the filter.
-     * @param {TodoFindUniqueArgs} args - Arguments to find a Todo
+     * Find zero or one Patron that matches the filter.
+     * @param {PatronFindUniqueArgs} args - Arguments to find a Patron
      * @example
-     * // Get one Todo
-     * const todo = await prisma.todo.findUnique({
+     * // Get one Patron
+     * const patron = await prisma.patron.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends TodoFindUniqueArgs>(args: SelectSubset<T, TodoFindUniqueArgs<ExtArgs>>): Prisma__TodoClient<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends PatronFindUniqueArgs>(args: SelectSubset<T, PatronFindUniqueArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Todo that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Patron that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {TodoFindUniqueOrThrowArgs} args - Arguments to find a Todo
+     * @param {PatronFindUniqueOrThrowArgs} args - Arguments to find a Patron
      * @example
-     * // Get one Todo
-     * const todo = await prisma.todo.findUniqueOrThrow({
+     * // Get one Patron
+     * const patron = await prisma.patron.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends TodoFindUniqueOrThrowArgs>(args: SelectSubset<T, TodoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TodoClient<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends PatronFindUniqueOrThrowArgs>(args: SelectSubset<T, PatronFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Todo that matches the filter.
+     * Find the first Patron that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TodoFindFirstArgs} args - Arguments to find a Todo
+     * @param {PatronFindFirstArgs} args - Arguments to find a Patron
      * @example
-     * // Get one Todo
-     * const todo = await prisma.todo.findFirst({
+     * // Get one Patron
+     * const patron = await prisma.patron.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends TodoFindFirstArgs>(args?: SelectSubset<T, TodoFindFirstArgs<ExtArgs>>): Prisma__TodoClient<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends PatronFindFirstArgs>(args?: SelectSubset<T, PatronFindFirstArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Todo that matches the filter or
+     * Find the first Patron that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TodoFindFirstOrThrowArgs} args - Arguments to find a Todo
+     * @param {PatronFindFirstOrThrowArgs} args - Arguments to find a Patron
      * @example
-     * // Get one Todo
-     * const todo = await prisma.todo.findFirstOrThrow({
+     * // Get one Patron
+     * const patron = await prisma.patron.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends TodoFindFirstOrThrowArgs>(args?: SelectSubset<T, TodoFindFirstOrThrowArgs<ExtArgs>>): Prisma__TodoClient<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends PatronFindFirstOrThrowArgs>(args?: SelectSubset<T, PatronFindFirstOrThrowArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Todos that matches the filter.
+     * Find zero or more Patrons that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TodoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PatronFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Todos
-     * const todos = await prisma.todo.findMany()
+     * // Get all Patrons
+     * const patrons = await prisma.patron.findMany()
      * 
-     * // Get first 10 Todos
-     * const todos = await prisma.todo.findMany({ take: 10 })
+     * // Get first 10 Patrons
+     * const patrons = await prisma.patron.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const todoWithIdOnly = await prisma.todo.findMany({ select: { id: true } })
+     * const patronWithIdOnly = await prisma.patron.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends TodoFindManyArgs>(args?: SelectSubset<T, TodoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends PatronFindManyArgs>(args?: SelectSubset<T, PatronFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Todo.
-     * @param {TodoCreateArgs} args - Arguments to create a Todo.
+     * Create a Patron.
+     * @param {PatronCreateArgs} args - Arguments to create a Patron.
      * @example
-     * // Create one Todo
-     * const Todo = await prisma.todo.create({
+     * // Create one Patron
+     * const Patron = await prisma.patron.create({
      *   data: {
-     *     // ... data to create a Todo
+     *     // ... data to create a Patron
      *   }
      * })
      * 
      */
-    create<T extends TodoCreateArgs>(args: SelectSubset<T, TodoCreateArgs<ExtArgs>>): Prisma__TodoClient<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends PatronCreateArgs>(args: SelectSubset<T, PatronCreateArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Todos.
-     * @param {TodoCreateManyArgs} args - Arguments to create many Todos.
+     * Create many Patrons.
+     * @param {PatronCreateManyArgs} args - Arguments to create many Patrons.
      * @example
-     * // Create many Todos
-     * const todo = await prisma.todo.createMany({
+     * // Create many Patrons
+     * const patron = await prisma.patron.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends TodoCreateManyArgs>(args?: SelectSubset<T, TodoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PatronCreateManyArgs>(args?: SelectSubset<T, PatronCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Todos and returns the data saved in the database.
-     * @param {TodoCreateManyAndReturnArgs} args - Arguments to create many Todos.
+     * Create many Patrons and returns the data saved in the database.
+     * @param {PatronCreateManyAndReturnArgs} args - Arguments to create many Patrons.
      * @example
-     * // Create many Todos
-     * const todo = await prisma.todo.createManyAndReturn({
+     * // Create many Patrons
+     * const patron = await prisma.patron.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Todos and only return the `id`
-     * const todoWithIdOnly = await prisma.todo.createManyAndReturn({
+     * // Create many Patrons and only return the `id`
+     * const patronWithIdOnly = await prisma.patron.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1243,28 +1362,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends TodoCreateManyAndReturnArgs>(args?: SelectSubset<T, TodoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends PatronCreateManyAndReturnArgs>(args?: SelectSubset<T, PatronCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Todo.
-     * @param {TodoDeleteArgs} args - Arguments to delete one Todo.
+     * Delete a Patron.
+     * @param {PatronDeleteArgs} args - Arguments to delete one Patron.
      * @example
-     * // Delete one Todo
-     * const Todo = await prisma.todo.delete({
+     * // Delete one Patron
+     * const Patron = await prisma.patron.delete({
      *   where: {
-     *     // ... filter to delete one Todo
+     *     // ... filter to delete one Patron
      *   }
      * })
      * 
      */
-    delete<T extends TodoDeleteArgs>(args: SelectSubset<T, TodoDeleteArgs<ExtArgs>>): Prisma__TodoClient<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends PatronDeleteArgs>(args: SelectSubset<T, PatronDeleteArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Todo.
-     * @param {TodoUpdateArgs} args - Arguments to update one Todo.
+     * Update one Patron.
+     * @param {PatronUpdateArgs} args - Arguments to update one Patron.
      * @example
-     * // Update one Todo
-     * const todo = await prisma.todo.update({
+     * // Update one Patron
+     * const patron = await prisma.patron.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1274,30 +1393,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends TodoUpdateArgs>(args: SelectSubset<T, TodoUpdateArgs<ExtArgs>>): Prisma__TodoClient<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends PatronUpdateArgs>(args: SelectSubset<T, PatronUpdateArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Todos.
-     * @param {TodoDeleteManyArgs} args - Arguments to filter Todos to delete.
+     * Delete zero or more Patrons.
+     * @param {PatronDeleteManyArgs} args - Arguments to filter Patrons to delete.
      * @example
-     * // Delete a few Todos
-     * const { count } = await prisma.todo.deleteMany({
+     * // Delete a few Patrons
+     * const { count } = await prisma.patron.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends TodoDeleteManyArgs>(args?: SelectSubset<T, TodoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends PatronDeleteManyArgs>(args?: SelectSubset<T, PatronDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Todos.
+     * Update zero or more Patrons.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TodoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PatronUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Todos
-     * const todo = await prisma.todo.updateMany({
+     * // Update many Patrons
+     * const patron = await prisma.patron.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1307,14 +1426,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends TodoUpdateManyArgs>(args: SelectSubset<T, TodoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends PatronUpdateManyArgs>(args: SelectSubset<T, PatronUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Todos and returns the data updated in the database.
-     * @param {TodoUpdateManyAndReturnArgs} args - Arguments to update many Todos.
+     * Update zero or more Patrons and returns the data updated in the database.
+     * @param {PatronUpdateManyAndReturnArgs} args - Arguments to update many Patrons.
      * @example
-     * // Update many Todos
-     * const todo = await prisma.todo.updateManyAndReturn({
+     * // Update many Patrons
+     * const patron = await prisma.patron.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1323,8 +1442,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Todos and only return the `id`
-     * const todoWithIdOnly = await prisma.todo.updateManyAndReturn({
+     * // Update zero or more Patrons and only return the `id`
+     * const patronWithIdOnly = await prisma.patron.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -1337,56 +1456,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends TodoUpdateManyAndReturnArgs>(args: SelectSubset<T, TodoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends PatronUpdateManyAndReturnArgs>(args: SelectSubset<T, PatronUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Todo.
-     * @param {TodoUpsertArgs} args - Arguments to update or create a Todo.
+     * Create or update one Patron.
+     * @param {PatronUpsertArgs} args - Arguments to update or create a Patron.
      * @example
-     * // Update or create a Todo
-     * const todo = await prisma.todo.upsert({
+     * // Update or create a Patron
+     * const patron = await prisma.patron.upsert({
      *   create: {
-     *     // ... data to create a Todo
+     *     // ... data to create a Patron
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Todo we want to update
+     *     // ... the filter for the Patron we want to update
      *   }
      * })
      */
-    upsert<T extends TodoUpsertArgs>(args: SelectSubset<T, TodoUpsertArgs<ExtArgs>>): Prisma__TodoClient<$Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends PatronUpsertArgs>(args: SelectSubset<T, PatronUpsertArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Todos.
+     * Count the number of Patrons.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TodoCountArgs} args - Arguments to filter Todos to count.
+     * @param {PatronCountArgs} args - Arguments to filter Patrons to count.
      * @example
-     * // Count the number of Todos
-     * const count = await prisma.todo.count({
+     * // Count the number of Patrons
+     * const count = await prisma.patron.count({
      *   where: {
-     *     // ... the filter for the Todos we want to count
+     *     // ... the filter for the Patrons we want to count
      *   }
      * })
     **/
-    count<T extends TodoCountArgs>(
-      args?: Subset<T, TodoCountArgs>,
+    count<T extends PatronCountArgs>(
+      args?: Subset<T, PatronCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], TodoCountAggregateOutputType>
+          : GetScalarType<T['select'], PatronCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Todo.
+     * Allows you to perform aggregations operations on a Patron.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TodoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PatronAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1406,13 +1525,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends TodoAggregateArgs>(args: Subset<T, TodoAggregateArgs>): Prisma.PrismaPromise<GetTodoAggregateType<T>>
+    aggregate<T extends PatronAggregateArgs>(args: Subset<T, PatronAggregateArgs>): Prisma.PrismaPromise<GetPatronAggregateType<T>>
 
     /**
-     * Group by Todo.
+     * Group by Patron.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TodoGroupByArgs} args - Group by arguments.
+     * @param {PatronGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1427,14 +1546,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TodoGroupByArgs,
+      T extends PatronGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TodoGroupByArgs['orderBy'] }
-        : { orderBy?: TodoGroupByArgs['orderBy'] },
+        ? { orderBy: PatronGroupByArgs['orderBy'] }
+        : { orderBy?: PatronGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1483,21 +1602,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TodoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTodoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PatronGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPatronGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Todo model
+   * Fields of the Patron model
    */
-  readonly fields: TodoFieldRefs;
+  readonly fields: PatronFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Todo.
+   * The delegate class that acts as a "Promise-like" for Patron.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__TodoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PatronClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    books<T extends Patron$booksArgs<ExtArgs> = {}>(args?: Subset<T, Patron$booksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1524,375 +1644,1558 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Todo model
+   * Fields of the Patron model
    */
-  interface TodoFieldRefs {
-    readonly id: FieldRef<"Todo", 'Int'>
-    readonly title: FieldRef<"Todo", 'String'>
-    readonly completed: FieldRef<"Todo", 'Boolean'>
-    readonly createdAt: FieldRef<"Todo", 'DateTime'>
-    readonly updatedAt: FieldRef<"Todo", 'DateTime'>
+  interface PatronFieldRefs {
+    readonly id: FieldRef<"Patron", 'Int'>
+    readonly name: FieldRef<"Patron", 'String'>
+    readonly createdAt: FieldRef<"Patron", 'DateTime'>
+    readonly updatedAt: FieldRef<"Patron", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Todo findUnique
+   * Patron findUnique
    */
-  export type TodoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * Filter, which Todo to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where: TodoWhereUniqueInput
+    include?: PatronInclude<ExtArgs> | null
+    /**
+     * Filter, which Patron to fetch.
+     */
+    where: PatronWhereUniqueInput
   }
 
   /**
-   * Todo findUniqueOrThrow
+   * Patron findUniqueOrThrow
    */
-  export type TodoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * Filter, which Todo to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where: TodoWhereUniqueInput
+    include?: PatronInclude<ExtArgs> | null
+    /**
+     * Filter, which Patron to fetch.
+     */
+    where: PatronWhereUniqueInput
   }
 
   /**
-   * Todo findFirst
+   * Patron findFirst
    */
-  export type TodoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * Filter, which Todo to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: TodoWhereInput
+    include?: PatronInclude<ExtArgs> | null
+    /**
+     * Filter, which Patron to fetch.
+     */
+    where?: PatronWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Todos to fetch.
+     * Determine the order of Patrons to fetch.
      */
-    orderBy?: TodoOrderByWithRelationInput | TodoOrderByWithRelationInput[]
+    orderBy?: PatronOrderByWithRelationInput | PatronOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Todos.
+     * Sets the position for searching for Patrons.
      */
-    cursor?: TodoWhereUniqueInput
+    cursor?: PatronWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Todos from the position of the cursor.
+     * Take `±n` Patrons from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Todos.
+     * Skip the first `n` Patrons.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Todos.
+     * Filter by unique combinations of Patrons.
      */
-    distinct?: TodoScalarFieldEnum | TodoScalarFieldEnum[]
+    distinct?: PatronScalarFieldEnum | PatronScalarFieldEnum[]
   }
 
   /**
-   * Todo findFirstOrThrow
+   * Patron findFirstOrThrow
    */
-  export type TodoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * Filter, which Todo to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: TodoWhereInput
+    include?: PatronInclude<ExtArgs> | null
+    /**
+     * Filter, which Patron to fetch.
+     */
+    where?: PatronWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Todos to fetch.
+     * Determine the order of Patrons to fetch.
      */
-    orderBy?: TodoOrderByWithRelationInput | TodoOrderByWithRelationInput[]
+    orderBy?: PatronOrderByWithRelationInput | PatronOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Todos.
+     * Sets the position for searching for Patrons.
      */
-    cursor?: TodoWhereUniqueInput
+    cursor?: PatronWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Todos from the position of the cursor.
+     * Take `±n` Patrons from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Todos.
+     * Skip the first `n` Patrons.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Todos.
+     * Filter by unique combinations of Patrons.
      */
-    distinct?: TodoScalarFieldEnum | TodoScalarFieldEnum[]
+    distinct?: PatronScalarFieldEnum | PatronScalarFieldEnum[]
   }
 
   /**
-   * Todo findMany
+   * Patron findMany
    */
-  export type TodoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * Filter, which Todos to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: TodoWhereInput
+    include?: PatronInclude<ExtArgs> | null
+    /**
+     * Filter, which Patrons to fetch.
+     */
+    where?: PatronWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Todos to fetch.
+     * Determine the order of Patrons to fetch.
      */
-    orderBy?: TodoOrderByWithRelationInput | TodoOrderByWithRelationInput[]
+    orderBy?: PatronOrderByWithRelationInput | PatronOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Todos.
+     * Sets the position for listing Patrons.
      */
-    cursor?: TodoWhereUniqueInput
+    cursor?: PatronWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Todos from the position of the cursor.
+     * Take `±n` Patrons from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Todos.
+     * Skip the first `n` Patrons.
      */
     skip?: number
-    distinct?: TodoScalarFieldEnum | TodoScalarFieldEnum[]
+    distinct?: PatronScalarFieldEnum | PatronScalarFieldEnum[]
   }
 
   /**
-   * Todo create
+   * Patron create
    */
-  export type TodoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * The data needed to create a Todo.
+     * Choose, which related nodes to fetch as well
      */
-    data: XOR<TodoCreateInput, TodoUncheckedCreateInput>
+    include?: PatronInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Patron.
+     */
+    data: XOR<PatronCreateInput, PatronUncheckedCreateInput>
   }
 
   /**
-   * Todo createMany
+   * Patron createMany
    */
-  export type TodoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Todos.
+     * The data used to create many Patrons.
      */
-    data: TodoCreateManyInput | TodoCreateManyInput[]
+    data: PatronCreateManyInput | PatronCreateManyInput[]
   }
 
   /**
-   * Todo createManyAndReturn
+   * Patron createManyAndReturn
    */
-  export type TodoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelectCreateManyAndReturn<ExtArgs> | null
+    select?: PatronSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * The data used to create many Todos.
+     * The data used to create many Patrons.
      */
-    data: TodoCreateManyInput | TodoCreateManyInput[]
+    data: PatronCreateManyInput | PatronCreateManyInput[]
   }
 
   /**
-   * Todo update
+   * Patron update
    */
-  export type TodoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * The data needed to update a Todo.
+     * Choose, which related nodes to fetch as well
      */
-    data: XOR<TodoUpdateInput, TodoUncheckedUpdateInput>
+    include?: PatronInclude<ExtArgs> | null
     /**
-     * Choose, which Todo to update.
+     * The data needed to update a Patron.
      */
-    where: TodoWhereUniqueInput
+    data: XOR<PatronUpdateInput, PatronUncheckedUpdateInput>
+    /**
+     * Choose, which Patron to update.
+     */
+    where: PatronWhereUniqueInput
   }
 
   /**
-   * Todo updateMany
+   * Patron updateMany
    */
-  export type TodoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Todos.
+     * The data used to update Patrons.
      */
-    data: XOR<TodoUpdateManyMutationInput, TodoUncheckedUpdateManyInput>
+    data: XOR<PatronUpdateManyMutationInput, PatronUncheckedUpdateManyInput>
     /**
-     * Filter which Todos to update
+     * Filter which Patrons to update
      */
-    where?: TodoWhereInput
+    where?: PatronWhereInput
     /**
-     * Limit how many Todos to update.
+     * Limit how many Patrons to update.
      */
     limit?: number
   }
 
   /**
-   * Todo updateManyAndReturn
+   * Patron updateManyAndReturn
    */
-  export type TodoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: PatronSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * The data used to update Todos.
+     * The data used to update Patrons.
      */
-    data: XOR<TodoUpdateManyMutationInput, TodoUncheckedUpdateManyInput>
+    data: XOR<PatronUpdateManyMutationInput, PatronUncheckedUpdateManyInput>
     /**
-     * Filter which Todos to update
+     * Filter which Patrons to update
      */
-    where?: TodoWhereInput
+    where?: PatronWhereInput
     /**
-     * Limit how many Todos to update.
+     * Limit how many Patrons to update.
      */
     limit?: number
   }
 
   /**
-   * Todo upsert
+   * Patron upsert
    */
-  export type TodoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * The filter to search for the Todo to update in case it exists.
+     * Choose, which related nodes to fetch as well
      */
-    where: TodoWhereUniqueInput
+    include?: PatronInclude<ExtArgs> | null
     /**
-     * In case the Todo found by the `where` argument doesn't exist, create a new Todo with this data.
+     * The filter to search for the Patron to update in case it exists.
      */
-    create: XOR<TodoCreateInput, TodoUncheckedCreateInput>
+    where: PatronWhereUniqueInput
     /**
-     * In case the Todo was found with the provided `where` argument, update it with this data.
+     * In case the Patron found by the `where` argument doesn't exist, create a new Patron with this data.
      */
-    update: XOR<TodoUpdateInput, TodoUncheckedUpdateInput>
+    create: XOR<PatronCreateInput, PatronUncheckedCreateInput>
+    /**
+     * In case the Patron was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PatronUpdateInput, PatronUncheckedUpdateInput>
   }
 
   /**
-   * Todo delete
+   * Patron delete
    */
-  export type TodoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Patron
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: PatronSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Patron
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: PatronOmit<ExtArgs> | null
     /**
-     * Filter which Todo to delete.
+     * Choose, which related nodes to fetch as well
      */
-    where: TodoWhereUniqueInput
+    include?: PatronInclude<ExtArgs> | null
+    /**
+     * Filter which Patron to delete.
+     */
+    where: PatronWhereUniqueInput
   }
 
   /**
-   * Todo deleteMany
+   * Patron deleteMany
    */
-  export type TodoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PatronDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Todos to delete
+     * Filter which Patrons to delete
      */
-    where?: TodoWhereInput
+    where?: PatronWhereInput
     /**
-     * Limit how many Todos to delete.
+     * Limit how many Patrons to delete.
      */
     limit?: number
   }
 
   /**
-   * Todo without action
+   * Patron.books
    */
-  export type TodoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Patron$booksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Todo
+     * Select specific fields to fetch from the Book
      */
-    select?: TodoSelect<ExtArgs> | null
+    select?: BookSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Todo
+     * Omit specific fields from the Book
      */
-    omit?: TodoOmit<ExtArgs> | null
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    where?: BookWhereInput
+    orderBy?: BookOrderByWithRelationInput | BookOrderByWithRelationInput[]
+    cursor?: BookWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookScalarFieldEnum | BookScalarFieldEnum[]
+  }
+
+  /**
+   * Patron without action
+   */
+  export type PatronDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Patron
+     */
+    select?: PatronSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Patron
+     */
+    omit?: PatronOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatronInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Book
+   */
+
+  export type AggregateBook = {
+    _count: BookCountAggregateOutputType | null
+    _avg: BookAvgAggregateOutputType | null
+    _sum: BookSumAggregateOutputType | null
+    _min: BookMinAggregateOutputType | null
+    _max: BookMaxAggregateOutputType | null
+  }
+
+  export type BookAvgAggregateOutputType = {
+    id: number | null
+    patronId: number | null
+  }
+
+  export type BookSumAggregateOutputType = {
+    id: number | null
+    patronId: number | null
+  }
+
+  export type BookMinAggregateOutputType = {
+    id: number | null
+    ISBN: string | null
+    Title: string | null
+    Author: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    patronId: number | null
+  }
+
+  export type BookMaxAggregateOutputType = {
+    id: number | null
+    ISBN: string | null
+    Title: string | null
+    Author: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    patronId: number | null
+  }
+
+  export type BookCountAggregateOutputType = {
+    id: number
+    ISBN: number
+    Title: number
+    Author: number
+    createdAt: number
+    updatedAt: number
+    patronId: number
+    _all: number
+  }
+
+
+  export type BookAvgAggregateInputType = {
+    id?: true
+    patronId?: true
+  }
+
+  export type BookSumAggregateInputType = {
+    id?: true
+    patronId?: true
+  }
+
+  export type BookMinAggregateInputType = {
+    id?: true
+    ISBN?: true
+    Title?: true
+    Author?: true
+    createdAt?: true
+    updatedAt?: true
+    patronId?: true
+  }
+
+  export type BookMaxAggregateInputType = {
+    id?: true
+    ISBN?: true
+    Title?: true
+    Author?: true
+    createdAt?: true
+    updatedAt?: true
+    patronId?: true
+  }
+
+  export type BookCountAggregateInputType = {
+    id?: true
+    ISBN?: true
+    Title?: true
+    Author?: true
+    createdAt?: true
+    updatedAt?: true
+    patronId?: true
+    _all?: true
+  }
+
+  export type BookAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Book to aggregate.
+     */
+    where?: BookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Books to fetch.
+     */
+    orderBy?: BookOrderByWithRelationInput | BookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Books from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Books.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Books
+    **/
+    _count?: true | BookCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BookAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BookSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BookMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BookMaxAggregateInputType
+  }
+
+  export type GetBookAggregateType<T extends BookAggregateArgs> = {
+        [P in keyof T & keyof AggregateBook]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBook[P]>
+      : GetScalarType<T[P], AggregateBook[P]>
+  }
+
+
+
+
+  export type BookGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookWhereInput
+    orderBy?: BookOrderByWithAggregationInput | BookOrderByWithAggregationInput[]
+    by: BookScalarFieldEnum[] | BookScalarFieldEnum
+    having?: BookScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BookCountAggregateInputType | true
+    _avg?: BookAvgAggregateInputType
+    _sum?: BookSumAggregateInputType
+    _min?: BookMinAggregateInputType
+    _max?: BookMaxAggregateInputType
+  }
+
+  export type BookGroupByOutputType = {
+    id: number
+    ISBN: string
+    Title: string
+    Author: string
+    createdAt: Date
+    updatedAt: Date
+    patronId: number
+    _count: BookCountAggregateOutputType | null
+    _avg: BookAvgAggregateOutputType | null
+    _sum: BookSumAggregateOutputType | null
+    _min: BookMinAggregateOutputType | null
+    _max: BookMaxAggregateOutputType | null
+  }
+
+  type GetBookGroupByPayload<T extends BookGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BookGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BookGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BookGroupByOutputType[P]>
+            : GetScalarType<T[P], BookGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BookSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ISBN?: boolean
+    Title?: boolean
+    Author?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    patronId?: boolean
+    patron?: boolean | PatronDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["book"]>
+
+  export type BookSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ISBN?: boolean
+    Title?: boolean
+    Author?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    patronId?: boolean
+    patron?: boolean | PatronDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["book"]>
+
+  export type BookSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ISBN?: boolean
+    Title?: boolean
+    Author?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    patronId?: boolean
+    patron?: boolean | PatronDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["book"]>
+
+  export type BookSelectScalar = {
+    id?: boolean
+    ISBN?: boolean
+    Title?: boolean
+    Author?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    patronId?: boolean
+  }
+
+  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ISBN" | "Title" | "Author" | "createdAt" | "updatedAt" | "patronId", ExtArgs["result"]["book"]>
+  export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    patron?: boolean | PatronDefaultArgs<ExtArgs>
+  }
+  export type BookIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    patron?: boolean | PatronDefaultArgs<ExtArgs>
+  }
+  export type BookIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    patron?: boolean | PatronDefaultArgs<ExtArgs>
+  }
+
+  export type $BookPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Book"
+    objects: {
+      patron: Prisma.$PatronPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      ISBN: string
+      Title: string
+      Author: string
+      createdAt: Date
+      updatedAt: Date
+      patronId: number
+    }, ExtArgs["result"]["book"]>
+    composites: {}
+  }
+
+  type BookGetPayload<S extends boolean | null | undefined | BookDefaultArgs> = $Result.GetResult<Prisma.$BookPayload, S>
+
+  type BookCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BookFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BookCountAggregateInputType | true
+    }
+
+  export interface BookDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Book'], meta: { name: 'Book' } }
+    /**
+     * Find zero or one Book that matches the filter.
+     * @param {BookFindUniqueArgs} args - Arguments to find a Book
+     * @example
+     * // Get one Book
+     * const book = await prisma.book.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BookFindUniqueArgs>(args: SelectSubset<T, BookFindUniqueArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Book that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BookFindUniqueOrThrowArgs} args - Arguments to find a Book
+     * @example
+     * // Get one Book
+     * const book = await prisma.book.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BookFindUniqueOrThrowArgs>(args: SelectSubset<T, BookFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Book that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookFindFirstArgs} args - Arguments to find a Book
+     * @example
+     * // Get one Book
+     * const book = await prisma.book.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BookFindFirstArgs>(args?: SelectSubset<T, BookFindFirstArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Book that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookFindFirstOrThrowArgs} args - Arguments to find a Book
+     * @example
+     * // Get one Book
+     * const book = await prisma.book.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BookFindFirstOrThrowArgs>(args?: SelectSubset<T, BookFindFirstOrThrowArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Books that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Books
+     * const books = await prisma.book.findMany()
+     * 
+     * // Get first 10 Books
+     * const books = await prisma.book.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bookWithIdOnly = await prisma.book.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BookFindManyArgs>(args?: SelectSubset<T, BookFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Book.
+     * @param {BookCreateArgs} args - Arguments to create a Book.
+     * @example
+     * // Create one Book
+     * const Book = await prisma.book.create({
+     *   data: {
+     *     // ... data to create a Book
+     *   }
+     * })
+     * 
+     */
+    create<T extends BookCreateArgs>(args: SelectSubset<T, BookCreateArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Books.
+     * @param {BookCreateManyArgs} args - Arguments to create many Books.
+     * @example
+     * // Create many Books
+     * const book = await prisma.book.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BookCreateManyArgs>(args?: SelectSubset<T, BookCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Books and returns the data saved in the database.
+     * @param {BookCreateManyAndReturnArgs} args - Arguments to create many Books.
+     * @example
+     * // Create many Books
+     * const book = await prisma.book.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Books and only return the `id`
+     * const bookWithIdOnly = await prisma.book.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BookCreateManyAndReturnArgs>(args?: SelectSubset<T, BookCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Book.
+     * @param {BookDeleteArgs} args - Arguments to delete one Book.
+     * @example
+     * // Delete one Book
+     * const Book = await prisma.book.delete({
+     *   where: {
+     *     // ... filter to delete one Book
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BookDeleteArgs>(args: SelectSubset<T, BookDeleteArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Book.
+     * @param {BookUpdateArgs} args - Arguments to update one Book.
+     * @example
+     * // Update one Book
+     * const book = await prisma.book.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BookUpdateArgs>(args: SelectSubset<T, BookUpdateArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Books.
+     * @param {BookDeleteManyArgs} args - Arguments to filter Books to delete.
+     * @example
+     * // Delete a few Books
+     * const { count } = await prisma.book.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BookDeleteManyArgs>(args?: SelectSubset<T, BookDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Books.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Books
+     * const book = await prisma.book.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BookUpdateManyArgs>(args: SelectSubset<T, BookUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Books and returns the data updated in the database.
+     * @param {BookUpdateManyAndReturnArgs} args - Arguments to update many Books.
+     * @example
+     * // Update many Books
+     * const book = await prisma.book.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Books and only return the `id`
+     * const bookWithIdOnly = await prisma.book.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BookUpdateManyAndReturnArgs>(args: SelectSubset<T, BookUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Book.
+     * @param {BookUpsertArgs} args - Arguments to update or create a Book.
+     * @example
+     * // Update or create a Book
+     * const book = await prisma.book.upsert({
+     *   create: {
+     *     // ... data to create a Book
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Book we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BookUpsertArgs>(args: SelectSubset<T, BookUpsertArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Books.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookCountArgs} args - Arguments to filter Books to count.
+     * @example
+     * // Count the number of Books
+     * const count = await prisma.book.count({
+     *   where: {
+     *     // ... the filter for the Books we want to count
+     *   }
+     * })
+    **/
+    count<T extends BookCountArgs>(
+      args?: Subset<T, BookCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BookCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Book.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BookAggregateArgs>(args: Subset<T, BookAggregateArgs>): Prisma.PrismaPromise<GetBookAggregateType<T>>
+
+    /**
+     * Group by Book.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BookGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BookGroupByArgs['orderBy'] }
+        : { orderBy?: BookGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BookGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Book model
+   */
+  readonly fields: BookFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Book.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BookClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    patron<T extends PatronDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatronDefaultArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Book model
+   */
+  interface BookFieldRefs {
+    readonly id: FieldRef<"Book", 'Int'>
+    readonly ISBN: FieldRef<"Book", 'String'>
+    readonly Title: FieldRef<"Book", 'String'>
+    readonly Author: FieldRef<"Book", 'String'>
+    readonly createdAt: FieldRef<"Book", 'DateTime'>
+    readonly updatedAt: FieldRef<"Book", 'DateTime'>
+    readonly patronId: FieldRef<"Book", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Book findUnique
+   */
+  export type BookFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * Filter, which Book to fetch.
+     */
+    where: BookWhereUniqueInput
+  }
+
+  /**
+   * Book findUniqueOrThrow
+   */
+  export type BookFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * Filter, which Book to fetch.
+     */
+    where: BookWhereUniqueInput
+  }
+
+  /**
+   * Book findFirst
+   */
+  export type BookFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * Filter, which Book to fetch.
+     */
+    where?: BookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Books to fetch.
+     */
+    orderBy?: BookOrderByWithRelationInput | BookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Books.
+     */
+    cursor?: BookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Books from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Books.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Books.
+     */
+    distinct?: BookScalarFieldEnum | BookScalarFieldEnum[]
+  }
+
+  /**
+   * Book findFirstOrThrow
+   */
+  export type BookFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * Filter, which Book to fetch.
+     */
+    where?: BookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Books to fetch.
+     */
+    orderBy?: BookOrderByWithRelationInput | BookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Books.
+     */
+    cursor?: BookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Books from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Books.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Books.
+     */
+    distinct?: BookScalarFieldEnum | BookScalarFieldEnum[]
+  }
+
+  /**
+   * Book findMany
+   */
+  export type BookFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * Filter, which Books to fetch.
+     */
+    where?: BookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Books to fetch.
+     */
+    orderBy?: BookOrderByWithRelationInput | BookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Books.
+     */
+    cursor?: BookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Books from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Books.
+     */
+    skip?: number
+    distinct?: BookScalarFieldEnum | BookScalarFieldEnum[]
+  }
+
+  /**
+   * Book create
+   */
+  export type BookCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Book.
+     */
+    data: XOR<BookCreateInput, BookUncheckedCreateInput>
+  }
+
+  /**
+   * Book createMany
+   */
+  export type BookCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Books.
+     */
+    data: BookCreateManyInput | BookCreateManyInput[]
+  }
+
+  /**
+   * Book createManyAndReturn
+   */
+  export type BookCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * The data used to create many Books.
+     */
+    data: BookCreateManyInput | BookCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Book update
+   */
+  export type BookUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Book.
+     */
+    data: XOR<BookUpdateInput, BookUncheckedUpdateInput>
+    /**
+     * Choose, which Book to update.
+     */
+    where: BookWhereUniqueInput
+  }
+
+  /**
+   * Book updateMany
+   */
+  export type BookUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Books.
+     */
+    data: XOR<BookUpdateManyMutationInput, BookUncheckedUpdateManyInput>
+    /**
+     * Filter which Books to update
+     */
+    where?: BookWhereInput
+    /**
+     * Limit how many Books to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Book updateManyAndReturn
+   */
+  export type BookUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * The data used to update Books.
+     */
+    data: XOR<BookUpdateManyMutationInput, BookUncheckedUpdateManyInput>
+    /**
+     * Filter which Books to update
+     */
+    where?: BookWhereInput
+    /**
+     * Limit how many Books to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Book upsert
+   */
+  export type BookUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Book to update in case it exists.
+     */
+    where: BookWhereUniqueInput
+    /**
+     * In case the Book found by the `where` argument doesn't exist, create a new Book with this data.
+     */
+    create: XOR<BookCreateInput, BookUncheckedCreateInput>
+    /**
+     * In case the Book was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BookUpdateInput, BookUncheckedUpdateInput>
+  }
+
+  /**
+   * Book delete
+   */
+  export type BookDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    /**
+     * Filter which Book to delete.
+     */
+    where: BookWhereUniqueInput
+  }
+
+  /**
+   * Book deleteMany
+   */
+  export type BookDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Books to delete
+     */
+    where?: BookWhereInput
+    /**
+     * Limit how many Books to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Book without action
+   */
+  export type BookDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
   }
 
 
@@ -1907,15 +3210,27 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const TodoScalarFieldEnum: {
+  export const PatronScalarFieldEnum: {
     id: 'id',
-    title: 'title',
-    completed: 'completed',
+    name: 'name',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type TodoScalarFieldEnum = (typeof TodoScalarFieldEnum)[keyof typeof TodoScalarFieldEnum]
+  export type PatronScalarFieldEnum = (typeof PatronScalarFieldEnum)[keyof typeof PatronScalarFieldEnum]
+
+
+  export const BookScalarFieldEnum: {
+    id: 'id',
+    ISBN: 'ISBN',
+    Title: 'Title',
+    Author: 'Author',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    patronId: 'patronId'
+  };
+
+  export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1946,13 +3261,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -1969,111 +3277,239 @@ export namespace Prisma {
    */
 
 
-  export type TodoWhereInput = {
-    AND?: TodoWhereInput | TodoWhereInput[]
-    OR?: TodoWhereInput[]
-    NOT?: TodoWhereInput | TodoWhereInput[]
-    id?: IntFilter<"Todo"> | number
-    title?: StringFilter<"Todo"> | string
-    completed?: BoolFilter<"Todo"> | boolean
-    createdAt?: DateTimeFilter<"Todo"> | Date | string
-    updatedAt?: DateTimeFilter<"Todo"> | Date | string
+  export type PatronWhereInput = {
+    AND?: PatronWhereInput | PatronWhereInput[]
+    OR?: PatronWhereInput[]
+    NOT?: PatronWhereInput | PatronWhereInput[]
+    id?: IntFilter<"Patron"> | number
+    name?: StringFilter<"Patron"> | string
+    createdAt?: DateTimeFilter<"Patron"> | Date | string
+    updatedAt?: DateTimeFilter<"Patron"> | Date | string
+    books?: BookListRelationFilter
   }
 
-  export type TodoOrderByWithRelationInput = {
+  export type PatronOrderByWithRelationInput = {
     id?: SortOrder
-    title?: SortOrder
-    completed?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    books?: BookOrderByRelationAggregateInput
   }
 
-  export type TodoWhereUniqueInput = Prisma.AtLeast<{
+  export type PatronWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: TodoWhereInput | TodoWhereInput[]
-    OR?: TodoWhereInput[]
-    NOT?: TodoWhereInput | TodoWhereInput[]
-    title?: StringFilter<"Todo"> | string
-    completed?: BoolFilter<"Todo"> | boolean
-    createdAt?: DateTimeFilter<"Todo"> | Date | string
-    updatedAt?: DateTimeFilter<"Todo"> | Date | string
+    AND?: PatronWhereInput | PatronWhereInput[]
+    OR?: PatronWhereInput[]
+    NOT?: PatronWhereInput | PatronWhereInput[]
+    name?: StringFilter<"Patron"> | string
+    createdAt?: DateTimeFilter<"Patron"> | Date | string
+    updatedAt?: DateTimeFilter<"Patron"> | Date | string
+    books?: BookListRelationFilter
   }, "id">
 
-  export type TodoOrderByWithAggregationInput = {
+  export type PatronOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
-    completed?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: TodoCountOrderByAggregateInput
-    _avg?: TodoAvgOrderByAggregateInput
-    _max?: TodoMaxOrderByAggregateInput
-    _min?: TodoMinOrderByAggregateInput
-    _sum?: TodoSumOrderByAggregateInput
+    _count?: PatronCountOrderByAggregateInput
+    _avg?: PatronAvgOrderByAggregateInput
+    _max?: PatronMaxOrderByAggregateInput
+    _min?: PatronMinOrderByAggregateInput
+    _sum?: PatronSumOrderByAggregateInput
   }
 
-  export type TodoScalarWhereWithAggregatesInput = {
-    AND?: TodoScalarWhereWithAggregatesInput | TodoScalarWhereWithAggregatesInput[]
-    OR?: TodoScalarWhereWithAggregatesInput[]
-    NOT?: TodoScalarWhereWithAggregatesInput | TodoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Todo"> | number
-    title?: StringWithAggregatesFilter<"Todo"> | string
-    completed?: BoolWithAggregatesFilter<"Todo"> | boolean
-    createdAt?: DateTimeWithAggregatesFilter<"Todo"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Todo"> | Date | string
+  export type PatronScalarWhereWithAggregatesInput = {
+    AND?: PatronScalarWhereWithAggregatesInput | PatronScalarWhereWithAggregatesInput[]
+    OR?: PatronScalarWhereWithAggregatesInput[]
+    NOT?: PatronScalarWhereWithAggregatesInput | PatronScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Patron"> | number
+    name?: StringWithAggregatesFilter<"Patron"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Patron"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Patron"> | Date | string
   }
 
-  export type TodoCreateInput = {
-    title: string
-    completed?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type BookWhereInput = {
+    AND?: BookWhereInput | BookWhereInput[]
+    OR?: BookWhereInput[]
+    NOT?: BookWhereInput | BookWhereInput[]
+    id?: IntFilter<"Book"> | number
+    ISBN?: StringFilter<"Book"> | string
+    Title?: StringFilter<"Book"> | string
+    Author?: StringFilter<"Book"> | string
+    createdAt?: DateTimeFilter<"Book"> | Date | string
+    updatedAt?: DateTimeFilter<"Book"> | Date | string
+    patronId?: IntFilter<"Book"> | number
+    patron?: XOR<PatronScalarRelationFilter, PatronWhereInput>
   }
 
-  export type TodoUncheckedCreateInput = {
+  export type BookOrderByWithRelationInput = {
+    id?: SortOrder
+    ISBN?: SortOrder
+    Title?: SortOrder
+    Author?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    patronId?: SortOrder
+    patron?: PatronOrderByWithRelationInput
+  }
+
+  export type BookWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    title: string
-    completed?: boolean
+    AND?: BookWhereInput | BookWhereInput[]
+    OR?: BookWhereInput[]
+    NOT?: BookWhereInput | BookWhereInput[]
+    ISBN?: StringFilter<"Book"> | string
+    Title?: StringFilter<"Book"> | string
+    Author?: StringFilter<"Book"> | string
+    createdAt?: DateTimeFilter<"Book"> | Date | string
+    updatedAt?: DateTimeFilter<"Book"> | Date | string
+    patronId?: IntFilter<"Book"> | number
+    patron?: XOR<PatronScalarRelationFilter, PatronWhereInput>
+  }, "id">
+
+  export type BookOrderByWithAggregationInput = {
+    id?: SortOrder
+    ISBN?: SortOrder
+    Title?: SortOrder
+    Author?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    patronId?: SortOrder
+    _count?: BookCountOrderByAggregateInput
+    _avg?: BookAvgOrderByAggregateInput
+    _max?: BookMaxOrderByAggregateInput
+    _min?: BookMinOrderByAggregateInput
+    _sum?: BookSumOrderByAggregateInput
+  }
+
+  export type BookScalarWhereWithAggregatesInput = {
+    AND?: BookScalarWhereWithAggregatesInput | BookScalarWhereWithAggregatesInput[]
+    OR?: BookScalarWhereWithAggregatesInput[]
+    NOT?: BookScalarWhereWithAggregatesInput | BookScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Book"> | number
+    ISBN?: StringWithAggregatesFilter<"Book"> | string
+    Title?: StringWithAggregatesFilter<"Book"> | string
+    Author?: StringWithAggregatesFilter<"Book"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
+    patronId?: IntWithAggregatesFilter<"Book"> | number
+  }
+
+  export type PatronCreateInput = {
+    name: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    books?: BookCreateNestedManyWithoutPatronInput
   }
 
-  export type TodoUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TodoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TodoCreateManyInput = {
+  export type PatronUncheckedCreateInput = {
     id?: number
-    title: string
-    completed?: boolean
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    books?: BookUncheckedCreateNestedManyWithoutPatronInput
+  }
+
+  export type PatronUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    books?: BookUpdateManyWithoutPatronNestedInput
+  }
+
+  export type PatronUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    books?: BookUncheckedUpdateManyWithoutPatronNestedInput
+  }
+
+  export type PatronCreateManyInput = {
+    id?: number
+    name: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type TodoUpdateManyMutationInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
+  export type PatronUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TodoUncheckedUpdateManyInput = {
+  export type PatronUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookCreateInput = {
+    ISBN: string
+    Title: string
+    Author: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patron: PatronCreateNestedOneWithoutBooksInput
+  }
+
+  export type BookUncheckedCreateInput = {
+    id?: number
+    ISBN: string
+    Title: string
+    Author: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patronId: number
+  }
+
+  export type BookUpdateInput = {
+    ISBN?: StringFieldUpdateOperationsInput | string
+    Title?: StringFieldUpdateOperationsInput | string
+    Author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patron?: PatronUpdateOneRequiredWithoutBooksNestedInput
+  }
+
+  export type BookUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ISBN?: StringFieldUpdateOperationsInput | string
+    Title?: StringFieldUpdateOperationsInput | string
+    Author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patronId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BookCreateManyInput = {
+    id?: number
+    ISBN: string
+    Title: string
+    Author: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patronId: number
+  }
+
+  export type BookUpdateManyMutationInput = {
+    ISBN?: StringFieldUpdateOperationsInput | string
+    Title?: StringFieldUpdateOperationsInput | string
+    Author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ISBN?: StringFieldUpdateOperationsInput | string
+    Title?: StringFieldUpdateOperationsInput | string
+    Author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patronId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2101,11 +3537,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -2117,35 +3548,42 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type TodoCountOrderByAggregateInput = {
+  export type BookListRelationFilter = {
+    every?: BookWhereInput
+    some?: BookWhereInput
+    none?: BookWhereInput
+  }
+
+  export type BookOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PatronCountOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    completed?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type TodoAvgOrderByAggregateInput = {
+  export type PatronAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type TodoMaxOrderByAggregateInput = {
+  export type PatronMaxOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    completed?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type TodoMinOrderByAggregateInput = {
+  export type PatronMinOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    completed?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type TodoSumOrderByAggregateInput = {
+  export type PatronSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
@@ -2182,14 +3620,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -2204,16 +3634,85 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type PatronScalarRelationFilter = {
+    is?: PatronWhereInput
+    isNot?: PatronWhereInput
+  }
+
+  export type BookCountOrderByAggregateInput = {
+    id?: SortOrder
+    ISBN?: SortOrder
+    Title?: SortOrder
+    Author?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    patronId?: SortOrder
+  }
+
+  export type BookAvgOrderByAggregateInput = {
+    id?: SortOrder
+    patronId?: SortOrder
+  }
+
+  export type BookMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ISBN?: SortOrder
+    Title?: SortOrder
+    Author?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    patronId?: SortOrder
+  }
+
+  export type BookMinOrderByAggregateInput = {
+    id?: SortOrder
+    ISBN?: SortOrder
+    Title?: SortOrder
+    Author?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    patronId?: SortOrder
+  }
+
+  export type BookSumOrderByAggregateInput = {
+    id?: SortOrder
+    patronId?: SortOrder
+  }
+
+  export type BookCreateNestedManyWithoutPatronInput = {
+    create?: XOR<BookCreateWithoutPatronInput, BookUncheckedCreateWithoutPatronInput> | BookCreateWithoutPatronInput[] | BookUncheckedCreateWithoutPatronInput[]
+    connectOrCreate?: BookCreateOrConnectWithoutPatronInput | BookCreateOrConnectWithoutPatronInput[]
+    createMany?: BookCreateManyPatronInputEnvelope
+    connect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+  }
+
+  export type BookUncheckedCreateNestedManyWithoutPatronInput = {
+    create?: XOR<BookCreateWithoutPatronInput, BookUncheckedCreateWithoutPatronInput> | BookCreateWithoutPatronInput[] | BookUncheckedCreateWithoutPatronInput[]
+    connectOrCreate?: BookCreateOrConnectWithoutPatronInput | BookCreateOrConnectWithoutPatronInput[]
+    createMany?: BookCreateManyPatronInputEnvelope
+    connect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type BookUpdateManyWithoutPatronNestedInput = {
+    create?: XOR<BookCreateWithoutPatronInput, BookUncheckedCreateWithoutPatronInput> | BookCreateWithoutPatronInput[] | BookUncheckedCreateWithoutPatronInput[]
+    connectOrCreate?: BookCreateOrConnectWithoutPatronInput | BookCreateOrConnectWithoutPatronInput[]
+    upsert?: BookUpsertWithWhereUniqueWithoutPatronInput | BookUpsertWithWhereUniqueWithoutPatronInput[]
+    createMany?: BookCreateManyPatronInputEnvelope
+    set?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    disconnect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    delete?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    connect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    update?: BookUpdateWithWhereUniqueWithoutPatronInput | BookUpdateWithWhereUniqueWithoutPatronInput[]
+    updateMany?: BookUpdateManyWithWhereWithoutPatronInput | BookUpdateManyWithWhereWithoutPatronInput[]
+    deleteMany?: BookScalarWhereInput | BookScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2222,6 +3721,34 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BookUncheckedUpdateManyWithoutPatronNestedInput = {
+    create?: XOR<BookCreateWithoutPatronInput, BookUncheckedCreateWithoutPatronInput> | BookCreateWithoutPatronInput[] | BookUncheckedCreateWithoutPatronInput[]
+    connectOrCreate?: BookCreateOrConnectWithoutPatronInput | BookCreateOrConnectWithoutPatronInput[]
+    upsert?: BookUpsertWithWhereUniqueWithoutPatronInput | BookUpsertWithWhereUniqueWithoutPatronInput[]
+    createMany?: BookCreateManyPatronInputEnvelope
+    set?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    disconnect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    delete?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    connect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    update?: BookUpdateWithWhereUniqueWithoutPatronInput | BookUpdateWithWhereUniqueWithoutPatronInput[]
+    updateMany?: BookUpdateManyWithWhereWithoutPatronInput | BookUpdateManyWithWhereWithoutPatronInput[]
+    deleteMany?: BookScalarWhereInput | BookScalarWhereInput[]
+  }
+
+  export type PatronCreateNestedOneWithoutBooksInput = {
+    create?: XOR<PatronCreateWithoutBooksInput, PatronUncheckedCreateWithoutBooksInput>
+    connectOrCreate?: PatronCreateOrConnectWithoutBooksInput
+    connect?: PatronWhereUniqueInput
+  }
+
+  export type PatronUpdateOneRequiredWithoutBooksNestedInput = {
+    create?: XOR<PatronCreateWithoutBooksInput, PatronUncheckedCreateWithoutBooksInput>
+    connectOrCreate?: PatronCreateOrConnectWithoutBooksInput
+    upsert?: PatronUpsertWithoutBooksInput
+    connect?: PatronWhereUniqueInput
+    update?: XOR<XOR<PatronUpdateToOneWithWhereWithoutBooksInput, PatronUpdateWithoutBooksInput>, PatronUncheckedUpdateWithoutBooksInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2247,11 +3774,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -2309,14 +3831,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -2329,6 +3843,138 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BookCreateWithoutPatronInput = {
+    ISBN: string
+    Title: string
+    Author: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookUncheckedCreateWithoutPatronInput = {
+    id?: number
+    ISBN: string
+    Title: string
+    Author: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookCreateOrConnectWithoutPatronInput = {
+    where: BookWhereUniqueInput
+    create: XOR<BookCreateWithoutPatronInput, BookUncheckedCreateWithoutPatronInput>
+  }
+
+  export type BookCreateManyPatronInputEnvelope = {
+    data: BookCreateManyPatronInput | BookCreateManyPatronInput[]
+  }
+
+  export type BookUpsertWithWhereUniqueWithoutPatronInput = {
+    where: BookWhereUniqueInput
+    update: XOR<BookUpdateWithoutPatronInput, BookUncheckedUpdateWithoutPatronInput>
+    create: XOR<BookCreateWithoutPatronInput, BookUncheckedCreateWithoutPatronInput>
+  }
+
+  export type BookUpdateWithWhereUniqueWithoutPatronInput = {
+    where: BookWhereUniqueInput
+    data: XOR<BookUpdateWithoutPatronInput, BookUncheckedUpdateWithoutPatronInput>
+  }
+
+  export type BookUpdateManyWithWhereWithoutPatronInput = {
+    where: BookScalarWhereInput
+    data: XOR<BookUpdateManyMutationInput, BookUncheckedUpdateManyWithoutPatronInput>
+  }
+
+  export type BookScalarWhereInput = {
+    AND?: BookScalarWhereInput | BookScalarWhereInput[]
+    OR?: BookScalarWhereInput[]
+    NOT?: BookScalarWhereInput | BookScalarWhereInput[]
+    id?: IntFilter<"Book"> | number
+    ISBN?: StringFilter<"Book"> | string
+    Title?: StringFilter<"Book"> | string
+    Author?: StringFilter<"Book"> | string
+    createdAt?: DateTimeFilter<"Book"> | Date | string
+    updatedAt?: DateTimeFilter<"Book"> | Date | string
+    patronId?: IntFilter<"Book"> | number
+  }
+
+  export type PatronCreateWithoutBooksInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PatronUncheckedCreateWithoutBooksInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PatronCreateOrConnectWithoutBooksInput = {
+    where: PatronWhereUniqueInput
+    create: XOR<PatronCreateWithoutBooksInput, PatronUncheckedCreateWithoutBooksInput>
+  }
+
+  export type PatronUpsertWithoutBooksInput = {
+    update: XOR<PatronUpdateWithoutBooksInput, PatronUncheckedUpdateWithoutBooksInput>
+    create: XOR<PatronCreateWithoutBooksInput, PatronUncheckedCreateWithoutBooksInput>
+    where?: PatronWhereInput
+  }
+
+  export type PatronUpdateToOneWithWhereWithoutBooksInput = {
+    where?: PatronWhereInput
+    data: XOR<PatronUpdateWithoutBooksInput, PatronUncheckedUpdateWithoutBooksInput>
+  }
+
+  export type PatronUpdateWithoutBooksInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PatronUncheckedUpdateWithoutBooksInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookCreateManyPatronInput = {
+    id?: number
+    ISBN: string
+    Title: string
+    Author: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookUpdateWithoutPatronInput = {
+    ISBN?: StringFieldUpdateOperationsInput | string
+    Title?: StringFieldUpdateOperationsInput | string
+    Author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookUncheckedUpdateWithoutPatronInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ISBN?: StringFieldUpdateOperationsInput | string
+    Title?: StringFieldUpdateOperationsInput | string
+    Author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookUncheckedUpdateManyWithoutPatronInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ISBN?: StringFieldUpdateOperationsInput | string
+    Title?: StringFieldUpdateOperationsInput | string
+    Author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
