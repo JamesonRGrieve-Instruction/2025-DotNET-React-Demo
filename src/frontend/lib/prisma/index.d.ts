@@ -2103,9 +2103,9 @@ export namespace Prisma {
 
   export type BookMinAggregateOutputType = {
     id: number | null
-    ISBN: string | null
-    Title: string | null
-    Author: string | null
+    isbn: string | null
+    title: string | null
+    author: string | null
     createdAt: Date | null
     updatedAt: Date | null
     patronId: number | null
@@ -2113,9 +2113,9 @@ export namespace Prisma {
 
   export type BookMaxAggregateOutputType = {
     id: number | null
-    ISBN: string | null
-    Title: string | null
-    Author: string | null
+    isbn: string | null
+    title: string | null
+    author: string | null
     createdAt: Date | null
     updatedAt: Date | null
     patronId: number | null
@@ -2123,9 +2123,9 @@ export namespace Prisma {
 
   export type BookCountAggregateOutputType = {
     id: number
-    ISBN: number
-    Title: number
-    Author: number
+    isbn: number
+    title: number
+    author: number
     createdAt: number
     updatedAt: number
     patronId: number
@@ -2145,9 +2145,9 @@ export namespace Prisma {
 
   export type BookMinAggregateInputType = {
     id?: true
-    ISBN?: true
-    Title?: true
-    Author?: true
+    isbn?: true
+    title?: true
+    author?: true
     createdAt?: true
     updatedAt?: true
     patronId?: true
@@ -2155,9 +2155,9 @@ export namespace Prisma {
 
   export type BookMaxAggregateInputType = {
     id?: true
-    ISBN?: true
-    Title?: true
-    Author?: true
+    isbn?: true
+    title?: true
+    author?: true
     createdAt?: true
     updatedAt?: true
     patronId?: true
@@ -2165,9 +2165,9 @@ export namespace Prisma {
 
   export type BookCountAggregateInputType = {
     id?: true
-    ISBN?: true
-    Title?: true
-    Author?: true
+    isbn?: true
+    title?: true
+    author?: true
     createdAt?: true
     updatedAt?: true
     patronId?: true
@@ -2262,12 +2262,12 @@ export namespace Prisma {
 
   export type BookGroupByOutputType = {
     id: number
-    ISBN: string
-    Title: string
-    Author: string
+    isbn: string
+    title: string
+    author: string
     createdAt: Date
     updatedAt: Date
-    patronId: number
+    patronId: number | null
     _count: BookCountAggregateOutputType | null
     _avg: BookAvgAggregateOutputType | null
     _sum: BookSumAggregateOutputType | null
@@ -2291,71 +2291,71 @@ export namespace Prisma {
 
   export type BookSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    ISBN?: boolean
-    Title?: boolean
-    Author?: boolean
+    isbn?: boolean
+    title?: boolean
+    author?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patronId?: boolean
-    patron?: boolean | PatronDefaultArgs<ExtArgs>
+    patron?: boolean | Book$patronArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
   export type BookSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    ISBN?: boolean
-    Title?: boolean
-    Author?: boolean
+    isbn?: boolean
+    title?: boolean
+    author?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patronId?: boolean
-    patron?: boolean | PatronDefaultArgs<ExtArgs>
+    patron?: boolean | Book$patronArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
   export type BookSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    ISBN?: boolean
-    Title?: boolean
-    Author?: boolean
+    isbn?: boolean
+    title?: boolean
+    author?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patronId?: boolean
-    patron?: boolean | PatronDefaultArgs<ExtArgs>
+    patron?: boolean | Book$patronArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
   export type BookSelectScalar = {
     id?: boolean
-    ISBN?: boolean
-    Title?: boolean
-    Author?: boolean
+    isbn?: boolean
+    title?: boolean
+    author?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     patronId?: boolean
   }
 
-  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ISBN" | "Title" | "Author" | "createdAt" | "updatedAt" | "patronId", ExtArgs["result"]["book"]>
+  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "isbn" | "title" | "author" | "createdAt" | "updatedAt" | "patronId", ExtArgs["result"]["book"]>
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patron?: boolean | PatronDefaultArgs<ExtArgs>
+    patron?: boolean | Book$patronArgs<ExtArgs>
   }
   export type BookIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patron?: boolean | PatronDefaultArgs<ExtArgs>
+    patron?: boolean | Book$patronArgs<ExtArgs>
   }
   export type BookIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patron?: boolean | PatronDefaultArgs<ExtArgs>
+    patron?: boolean | Book$patronArgs<ExtArgs>
   }
 
   export type $BookPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Book"
     objects: {
-      patron: Prisma.$PatronPayload<ExtArgs>
+      patron: Prisma.$PatronPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      ISBN: string
-      Title: string
-      Author: string
+      isbn: string
+      title: string
+      author: string
       createdAt: Date
       updatedAt: Date
-      patronId: number
+      patronId: number | null
     }, ExtArgs["result"]["book"]>
     composites: {}
   }
@@ -2750,7 +2750,7 @@ export namespace Prisma {
    */
   export interface Prisma__BookClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    patron<T extends PatronDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatronDefaultArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    patron<T extends Book$patronArgs<ExtArgs> = {}>(args?: Subset<T, Book$patronArgs<ExtArgs>>): Prisma__PatronClient<$Result.GetResult<Prisma.$PatronPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2781,9 +2781,9 @@ export namespace Prisma {
    */
   interface BookFieldRefs {
     readonly id: FieldRef<"Book", 'Int'>
-    readonly ISBN: FieldRef<"Book", 'String'>
-    readonly Title: FieldRef<"Book", 'String'>
-    readonly Author: FieldRef<"Book", 'String'>
+    readonly isbn: FieldRef<"Book", 'String'>
+    readonly title: FieldRef<"Book", 'String'>
+    readonly author: FieldRef<"Book", 'String'>
     readonly createdAt: FieldRef<"Book", 'DateTime'>
     readonly updatedAt: FieldRef<"Book", 'DateTime'>
     readonly patronId: FieldRef<"Book", 'Int'>
@@ -3181,6 +3181,25 @@ export namespace Prisma {
   }
 
   /**
+   * Book.patron
+   */
+  export type Book$patronArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Patron
+     */
+    select?: PatronSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Patron
+     */
+    omit?: PatronOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PatronInclude<ExtArgs> | null
+    where?: PatronWhereInput
+  }
+
+  /**
    * Book without action
    */
   export type BookDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3222,9 +3241,9 @@ export namespace Prisma {
 
   export const BookScalarFieldEnum: {
     id: 'id',
-    ISBN: 'ISBN',
-    Title: 'Title',
-    Author: 'Author',
+    isbn: 'isbn',
+    title: 'title',
+    author: 'author',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     patronId: 'patronId'
@@ -3239,6 +3258,14 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3334,23 +3361,23 @@ export namespace Prisma {
     OR?: BookWhereInput[]
     NOT?: BookWhereInput | BookWhereInput[]
     id?: IntFilter<"Book"> | number
-    ISBN?: StringFilter<"Book"> | string
-    Title?: StringFilter<"Book"> | string
-    Author?: StringFilter<"Book"> | string
+    isbn?: StringFilter<"Book"> | string
+    title?: StringFilter<"Book"> | string
+    author?: StringFilter<"Book"> | string
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeFilter<"Book"> | Date | string
-    patronId?: IntFilter<"Book"> | number
-    patron?: XOR<PatronScalarRelationFilter, PatronWhereInput>
+    patronId?: IntNullableFilter<"Book"> | number | null
+    patron?: XOR<PatronNullableScalarRelationFilter, PatronWhereInput> | null
   }
 
   export type BookOrderByWithRelationInput = {
     id?: SortOrder
-    ISBN?: SortOrder
-    Title?: SortOrder
-    Author?: SortOrder
+    isbn?: SortOrder
+    title?: SortOrder
+    author?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    patronId?: SortOrder
+    patronId?: SortOrderInput | SortOrder
     patron?: PatronOrderByWithRelationInput
   }
 
@@ -3359,23 +3386,23 @@ export namespace Prisma {
     AND?: BookWhereInput | BookWhereInput[]
     OR?: BookWhereInput[]
     NOT?: BookWhereInput | BookWhereInput[]
-    ISBN?: StringFilter<"Book"> | string
-    Title?: StringFilter<"Book"> | string
-    Author?: StringFilter<"Book"> | string
+    isbn?: StringFilter<"Book"> | string
+    title?: StringFilter<"Book"> | string
+    author?: StringFilter<"Book"> | string
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeFilter<"Book"> | Date | string
-    patronId?: IntFilter<"Book"> | number
-    patron?: XOR<PatronScalarRelationFilter, PatronWhereInput>
+    patronId?: IntNullableFilter<"Book"> | number | null
+    patron?: XOR<PatronNullableScalarRelationFilter, PatronWhereInput> | null
   }, "id">
 
   export type BookOrderByWithAggregationInput = {
     id?: SortOrder
-    ISBN?: SortOrder
-    Title?: SortOrder
-    Author?: SortOrder
+    isbn?: SortOrder
+    title?: SortOrder
+    author?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    patronId?: SortOrder
+    patronId?: SortOrderInput | SortOrder
     _count?: BookCountOrderByAggregateInput
     _avg?: BookAvgOrderByAggregateInput
     _max?: BookMaxOrderByAggregateInput
@@ -3388,12 +3415,12 @@ export namespace Prisma {
     OR?: BookScalarWhereWithAggregatesInput[]
     NOT?: BookScalarWhereWithAggregatesInput | BookScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Book"> | number
-    ISBN?: StringWithAggregatesFilter<"Book"> | string
-    Title?: StringWithAggregatesFilter<"Book"> | string
-    Author?: StringWithAggregatesFilter<"Book"> | string
+    isbn?: StringWithAggregatesFilter<"Book"> | string
+    title?: StringWithAggregatesFilter<"Book"> | string
+    author?: StringWithAggregatesFilter<"Book"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
-    patronId?: IntWithAggregatesFilter<"Book"> | number
+    patronId?: IntNullableWithAggregatesFilter<"Book"> | number | null
   }
 
   export type PatronCreateInput = {
@@ -3447,69 +3474,69 @@ export namespace Prisma {
   }
 
   export type BookCreateInput = {
-    ISBN: string
-    Title: string
-    Author: string
+    isbn: string
+    title: string
+    author: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    patron: PatronCreateNestedOneWithoutBooksInput
+    patron?: PatronCreateNestedOneWithoutBooksInput
   }
 
   export type BookUncheckedCreateInput = {
     id?: number
-    ISBN: string
-    Title: string
-    Author: string
+    isbn: string
+    title: string
+    author: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    patronId: number
+    patronId?: number | null
   }
 
   export type BookUpdateInput = {
-    ISBN?: StringFieldUpdateOperationsInput | string
-    Title?: StringFieldUpdateOperationsInput | string
-    Author?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    patron?: PatronUpdateOneRequiredWithoutBooksNestedInput
+    patron?: PatronUpdateOneWithoutBooksNestedInput
   }
 
   export type BookUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    ISBN?: StringFieldUpdateOperationsInput | string
-    Title?: StringFieldUpdateOperationsInput | string
-    Author?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    patronId?: IntFieldUpdateOperationsInput | number
+    patronId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type BookCreateManyInput = {
     id?: number
-    ISBN: string
-    Title: string
-    Author: string
+    isbn: string
+    title: string
+    author: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    patronId: number
+    patronId?: number | null
   }
 
   export type BookUpdateManyMutationInput = {
-    ISBN?: StringFieldUpdateOperationsInput | string
-    Title?: StringFieldUpdateOperationsInput | string
-    Author?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BookUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    ISBN?: StringFieldUpdateOperationsInput | string
-    Title?: StringFieldUpdateOperationsInput | string
-    Author?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    patronId?: IntFieldUpdateOperationsInput | number
+    patronId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3634,16 +3661,32 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type PatronScalarRelationFilter = {
-    is?: PatronWhereInput
-    isNot?: PatronWhereInput
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type PatronNullableScalarRelationFilter = {
+    is?: PatronWhereInput | null
+    isNot?: PatronWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type BookCountOrderByAggregateInput = {
     id?: SortOrder
-    ISBN?: SortOrder
-    Title?: SortOrder
-    Author?: SortOrder
+    isbn?: SortOrder
+    title?: SortOrder
+    author?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patronId?: SortOrder
@@ -3656,9 +3699,9 @@ export namespace Prisma {
 
   export type BookMaxOrderByAggregateInput = {
     id?: SortOrder
-    ISBN?: SortOrder
-    Title?: SortOrder
-    Author?: SortOrder
+    isbn?: SortOrder
+    title?: SortOrder
+    author?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patronId?: SortOrder
@@ -3666,9 +3709,9 @@ export namespace Prisma {
 
   export type BookMinOrderByAggregateInput = {
     id?: SortOrder
-    ISBN?: SortOrder
-    Title?: SortOrder
-    Author?: SortOrder
+    isbn?: SortOrder
+    title?: SortOrder
+    author?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     patronId?: SortOrder
@@ -3677,6 +3720,22 @@ export namespace Prisma {
   export type BookSumOrderByAggregateInput = {
     id?: SortOrder
     patronId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type BookCreateNestedManyWithoutPatronInput = {
@@ -3743,12 +3802,22 @@ export namespace Prisma {
     connect?: PatronWhereUniqueInput
   }
 
-  export type PatronUpdateOneRequiredWithoutBooksNestedInput = {
+  export type PatronUpdateOneWithoutBooksNestedInput = {
     create?: XOR<PatronCreateWithoutBooksInput, PatronUncheckedCreateWithoutBooksInput>
     connectOrCreate?: PatronCreateOrConnectWithoutBooksInput
     upsert?: PatronUpsertWithoutBooksInput
+    disconnect?: PatronWhereInput | boolean
+    delete?: PatronWhereInput | boolean
     connect?: PatronWhereUniqueInput
     update?: XOR<XOR<PatronUpdateToOneWithWhereWithoutBooksInput, PatronUpdateWithoutBooksInput>, PatronUncheckedUpdateWithoutBooksInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3845,19 +3914,57 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type BookCreateWithoutPatronInput = {
-    ISBN: string
-    Title: string
-    Author: string
+    isbn: string
+    title: string
+    author: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type BookUncheckedCreateWithoutPatronInput = {
     id?: number
-    ISBN: string
-    Title: string
-    Author: string
+    isbn: string
+    title: string
+    author: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3892,12 +3999,12 @@ export namespace Prisma {
     OR?: BookScalarWhereInput[]
     NOT?: BookScalarWhereInput | BookScalarWhereInput[]
     id?: IntFilter<"Book"> | number
-    ISBN?: StringFilter<"Book"> | string
-    Title?: StringFilter<"Book"> | string
-    Author?: StringFilter<"Book"> | string
+    isbn?: StringFilter<"Book"> | string
+    title?: StringFilter<"Book"> | string
+    author?: StringFilter<"Book"> | string
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeFilter<"Book"> | Date | string
-    patronId?: IntFilter<"Book"> | number
+    patronId?: IntNullableFilter<"Book"> | number | null
   }
 
   export type PatronCreateWithoutBooksInput = {
@@ -3944,35 +4051,35 @@ export namespace Prisma {
 
   export type BookCreateManyPatronInput = {
     id?: number
-    ISBN: string
-    Title: string
-    Author: string
+    isbn: string
+    title: string
+    author: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type BookUpdateWithoutPatronInput = {
-    ISBN?: StringFieldUpdateOperationsInput | string
-    Title?: StringFieldUpdateOperationsInput | string
-    Author?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BookUncheckedUpdateWithoutPatronInput = {
     id?: IntFieldUpdateOperationsInput | number
-    ISBN?: StringFieldUpdateOperationsInput | string
-    Title?: StringFieldUpdateOperationsInput | string
-    Author?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BookUncheckedUpdateManyWithoutPatronInput = {
     id?: IntFieldUpdateOperationsInput | number
-    ISBN?: StringFieldUpdateOperationsInput | string
-    Title?: StringFieldUpdateOperationsInput | string
-    Author?: StringFieldUpdateOperationsInput | string
+    isbn?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

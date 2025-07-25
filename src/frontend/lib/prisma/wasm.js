@@ -126,9 +126,9 @@ exports.Prisma.PatronScalarFieldEnum = {
 
 exports.Prisma.BookScalarFieldEnum = {
   id: 'id',
-  ISBN: 'ISBN',
-  Title: 'Title',
-  Author: 'Author',
+  isbn: 'isbn',
+  title: 'title',
+  author: 'author',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   patronId: 'patronId'
@@ -137,6 +137,11 @@ exports.Prisma.BookScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 

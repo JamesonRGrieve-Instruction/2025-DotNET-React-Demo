@@ -9,9 +9,9 @@ CREATE TABLE "Patron" (
 -- CreateTable
 CREATE TABLE "Book" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "ISBN" TEXT NOT NULL,
-    "Title" TEXT NOT NULL,
-    "Author" TEXT NOT NULL,
+    "isbn" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "author" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
     "patronId" INTEGER NOT NULL,
