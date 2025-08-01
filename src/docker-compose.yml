@@ -8,6 +8,7 @@ services:
   #   volumes:
   #     - ./compose.db:/app/app.db
   frontend:
+    image: ghcr.io/jamesonrgrieve-instruction/2025-dotnet-react-demo:latest
     build:
       context: ./frontend
       dockerfile: Dockerfile
