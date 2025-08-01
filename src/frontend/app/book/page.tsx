@@ -4,8 +4,8 @@ export default function Home() {
   const [isbn, setIsbn] = useState("");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [books, setBooks] = useState([]);
-  const [patrons, setPatrons] = useState([]);
+  const [books, setBooks] = useState<any[]>([]);
+  const [patrons, setPatrons] = useState<any[]>([]);
 
   useEffect(() => {
     fetchBooks();
